@@ -1,13 +1,12 @@
 const BlogShcema = require("../Model/blog");
 
-
 const addBlog = async (req, res) => {
   const { title, desc, category, category_desc, image } = req.body;
   try {
     if (!title && !desc && !category && !category_desc) {
       return res.status(401).json({ msg: "Please Fill All the Details." });
     }
-   
+
     const NewBlog = new BlogShcema({
       title,
       desc,
@@ -22,7 +21,9 @@ const addBlog = async (req, res) => {
       .json({ msg: "Blog Created successfully.", blog: NewBlog });
   } catch (error) {
     console.log(error);
-    return res.status(501).json({ msg: "Error in adding blog.", error: error });
+    return res
+      .status(501)
+      .json({ msg: "please fill unique title and desc.", error: error });
   }
 };
 

@@ -1,7 +1,7 @@
 const { Schema, model } = require("mongoose");
 
 const BlogModel = new Schema({
-  title: { type: String, required: true},
+  title: { type: String, required: true },
   desc: { type: String, required: true },
   category: { type: String, required: true },
   author_ID: { type: Schema.Types.ObjectId, ref: "Author", required: true },
